@@ -1,0 +1,101 @@
+
+
+.header {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+label {
+    padding-left: 15px;
+    border-bottom: medium solid rgb(154, 154, 243);
+}
+
+.contents {
+    padding: 0px 15px;
+}
+
+
+
+.title {
+    padding-left: 15px;
+    border-bottom: medium solid rgb(154, 154, 243);
+}
+
+
+
+.list h2 {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+
+.list th  {
+    padding-right: 5px;
+}
+
+.list td {
+    
+    padding-right: 5px;
+}
+
+.color-main {
+    background-color: gray;
+    width: 100%;
+}
+
+input {
+    padding: 10px 25px;
+}
+
+textarea {
+    margin-top: 4px;
+            resize: auto;
+            max-width: 500px;
+            max-height: 500px;
+            min-width: 10px;
+            min-height: 10px;
+            width: 250px;
+            height: 50px;
+}
+
+footer {
+    background-color: rgb(184, 184, 186);
+    font-size: 20px;
+    color: white;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+footer h2 {
+    text-align: center;
+}
+
+
+
+
+
+/* 検索フォーム */
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+    margin-bottom: 50px;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+
+
