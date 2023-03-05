@@ -62,7 +62,7 @@ class Product extends Model
         ]);
     }
 
-    public function productUpdate($request)
+    public function productUpdate($request, $id)
     {
         DB::table('Products')->update([
             'products.id as products_id' => $$request->products_id,

@@ -37,8 +37,7 @@
                     </tr>
                 </thead>
 
-                <form method="post" action="{{ route('product_update', ['id' => $result->id]) }}"
-                    enctype="multipart/form-data">
+                <form method="post" action="{{ route('product_update', $result) }}" enctype="multipart/form-data">
                     @csrf
                     <tbody>
 

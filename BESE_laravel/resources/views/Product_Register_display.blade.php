@@ -37,8 +37,8 @@
 
                         <tr>
                             <th>
-                                <input value="{{ old('product_name') }}" type="text" id="new-register"
-                                    name="product_name" required minlength="1" maxlength="8" size="10">
+                                <input type="text" id="new-register" name="product_name" required minlength="1"
+                                    maxlength="8" size="10">
                             </th>
                             @if ($errors->has('product_name'))
                                 <p>{{ $errors->first('product_name') }}</p>
@@ -56,30 +56,30 @@
                                 </select>
 
                             <th>
-                                <input value="{{ old('price') }}" type="text" id="price" name="price" required
-                                    minlength="1" maxlength="8" size="10">
+                                <input type="text" id="price" name="price" required minlength="1"
+                                    maxlength="8" size="10">
                                 @if ($errors->has('price'))
                                     <p>{{ $errors->first('price') }}</p>
                                 @endif
                             </th>
 
                             <th>
-                                <input value="{{ old('stock') }}" type="text" id="stock" name="stock" required
-                                    minlength="1" maxlength="8" size="10">
+                                <input type="text" id="stock" name="stock" required minlength="1"
+                                    maxlength="8" size="10">
                                 @if ($errors->has('stock'))
                                     <p>{{ $errors->first('stock') }}</p>
                                 @endif
                             </th>
 
                             <th>
-                                <textarea name="comment" id="comment">{{ old('comment') }}</textarea>
+                                <textarea name="comment" id="comment"></textarea>
                                 @if ($errors->has('comment'))
                                     <p>{{ $errors->first('comment') }}</p>
                                 @endif
                             </th>
 
                             <th>
-                                <input name='img_path' value="{{ old('img_path') }}" class="img_path" type="file">
+                                <input name='img_path' class="img_path" type="file">
                                 @if ($errors->has('img_path'))
                                     <p>{{ $errors->first('img_path') }}</p>
                                 @endif

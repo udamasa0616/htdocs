@@ -55,7 +55,7 @@
         </div>
 
         <div>
-            <button class="edit" type="button"><a href="{{ route('edit', ['id' => $result->id]) }}">編集</a></button>
+            <button class="edit" type="button"><a href="{{ route('edit', $result) }}">編集</a></button>
             <button class="return-bottom" type="button"><a href="{{ route('main') }}">戻る</a></button>
         </div>
 

@@ -23,19 +23,12 @@ class ProductController extends Controller
         return view('main_display', ['result' => $result]);
     }
 
-    public function productInfoView()
-    {
-        $products = new Product();
-        $result   = $products->getAll();
-        return view('information_details', ['result' => $result]);
-    }
-
-    public function productSalesView()
-    {
-        $products = new Product();
-        $result   = $products->getAll();
-        return view('Product_information_edited_image', ['result' => $result]);
-    }
+    // public function productSalesView()
+    // {
+    //     $products = new Product();
+    //     $result   = $products->getAll();
+    //     return view('Product_information_edited_image', ['result' => $result]);
+    // }
 
 
 
@@ -66,7 +59,7 @@ class ProductController extends Controller
             'comment' => $request->comment,
             'img_path' => $path, //$request->img_path,
         ]);
-        return view('Product_Register_display');
+        return redirect()->route('register');
     }
 
     /**
@@ -93,37 +86,36 @@ class ProductController extends Controller
     }
 
     // 詳細画面表示
-    public function productShow($id)
+    public function productShow(Product $id)
     {
-        $result = Product::find($id);
-        return view('information_details', ['result' => $result]);
+        return view('information_details', ['result' => $id]);
     }
 
     /**
      * 編集画面の表示
      */
-    public function productEdit($id)
+    public function productEdit(Product $id)
     {
-        $result = Product::find($id);
-        return view('Product_edit', ['result' => $result]);
+        return view('Product_edit', ['result' => $id]);
     }
 
     /**
      * 更新処理
      */
-    public function productUpdate(Request $request, $id)
+    public function productUpdate(Request $request, Product $id)
     {
-        $update = Product::find($id);
+        $result = Product::find($id);
         // 画像ファイルインスタンス取得
         $image = $request->file('img_path');
         // 現在の画像へのパスをセット
-        $path = $update->img_path;
+        $path = $id->img_path;
         if (isset($image)) {
             // 現在の画像ファイルの削除
             \Storage::disk('public')->delete($path);
-            // 選択された画像ファイルを保存してパスをセット
-            $path = $image->store('items', 'public');
         }
+        // 選択された画像ファイルを保存してパスをセット
+        $path = $image->store('items', 'public');
+
 
         // データベースを更新
         \DB::table('products')->update([
@@ -134,7 +126,7 @@ class ProductController extends Controller
             'comment' => $request->comment,
             'img_path' => $path, //$request->img_path,
         ]);
-        return view('Product_edit', ['result' => $update]);
+        return redirect()->route('edit', $id);
     }
 
 
@@ -150,17 +142,5 @@ class ProductController extends Controller
 
 
     // 検索画面
-    public function index(Request $request)
-    {
-        $keyword = $request->input('product');
 
-        $query = Product::query();
-        if (!empty($keyword)) {
-            $query->where('product_name', 'LIKE', "%{$keyword}%");
-        }
-
-        $result = $query->get();
-
-        return view('index', ['result' => $result]);
-    }
 }
