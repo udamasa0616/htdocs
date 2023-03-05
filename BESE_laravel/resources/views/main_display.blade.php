@@ -53,10 +53,17 @@
                             <th>{{ $product->product_name }}</th>
                             <th>{{ $product->price }}</th>
                             <th>{{ $product->stock }}</th>
-                            <th>{{ $product->company_id }}</th>
+                            <th>
+                                @if ($product->company_id === 1)
+                                    <p>WEST</p>
+                                @elseif($product->company_id === 2)
+                                    <p>EAST</p>
+                                @else
+                                    <p>Group</p>
+                                @endif
+                            </th>
                             <th>{{ $product->comment }}</th>
-                            <th><a
-                                    href="{{ route('show', ['id' => $product->products_id]) }}"><button>詳細情報</button></a>
+                            <th><a href="{{ route('show', ['id' => $product->products_id]) }}"><button>詳細情報</button></a>
                             </th>
                             <th>
                                 <form onsubmit="return confirm('本当に削除しますか？')"

@@ -30,14 +30,22 @@
                         <th>在庫数</th>
                         <th>コメント</th>
                     </tr>
-            </thead> 
+            </thead>
             <tbody>
-                
+
                 <tr>
                     <td>{{ $result->id }}</td>
-                    <td><img src="{{asset('storage/'.$result->img_path) }}" width="25%"></td>
+                    <td><img src="{{ asset('storage/' . $result->img_path) }}" width="25%"></td>
                     <td>{{ $result->product_name }}</td>
-                    <td>{{ $result->company_id }}</td>
+                    <td>
+                        @if ($result->company_id === 1)
+                            <p>WEST</p>
+                        @elseif($result->company_id === 2)
+                            <p>EAST</p>
+                        @else
+                            <p>Group</p>
+                        @endif
+                    </td>
                     <td>{{ $result->price }}</td>
                     <td>{{ $result->stock }}</td>
                     <td>{!! nl2br(e($result->comment)) !!}</td>
@@ -45,12 +53,12 @@
             </tbody>
             </table>
         </div>
-        
+
         <div>
-        <button class="edit" type="button"><a href="{{ route('edit', ['id'=>$result->id] ) }}">編集</a></button> 
-        <button class="return-bottom" type="button"><a href="{{ route('main') }}">戻る</a></button>
+            <button class="edit" type="button"><a href="{{ route('edit', ['id' => $result->id]) }}">編集</a></button>
+            <button class="return-bottom" type="button"><a href="{{ route('main') }}">戻る</a></button>
         </div>
-        
+
 
 
     </main>
