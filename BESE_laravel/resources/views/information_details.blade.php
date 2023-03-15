@@ -32,34 +32,33 @@
                     </tr>
             </thead>
             <tbody>
-
-                <tr>
-                    <td>{{ $result->id }}</td>
-                    <td><img src="{{ asset('storage/' . $result->img_path) }}" width="25%"></td>
-                    <td>{{ $result->product_name }}</td>
-                    <td>
-                        @if ($result->company_id === 1)
-                            <p>WEST</p>
-                        @elseif($result->company_id === 2)
-                            <p>EAST</p>
-                        @else
-                            <p>Group</p>
-                        @endif
-                    </td>
-                    <td>{{ $result->price }}</td>
-                    <td>{{ $result->stock }}</td>
-                    <td>{!! nl2br(e($result->comment)) !!}</td>
-                </tr>
+                @foreach ($result as $product)
+                    <tr>
+                        <td>{{ $product->id }}</td>
+                        <td><img src="{{ asset('storage/' . $product->img_path) }}" width="25%"></td>
+                        <td>{{ $product->product_name }}</td>
+                        <td>
+                            @if ($product->company_id === 1)
+                                <p>WEST</p>
+                            @elseif($product->company_id === 2)
+                                <p>EAST</p>
+                            @else
+                                <p>Group</p>
+                            @endif
+                        </td>
+                        <td>{{ $product->price }}</td>
+                        <td>{{ $product->stock }}</td>
+                        <td>{!! nl2br(e($product->comment)) !!}</td>
+                    </tr>
             </tbody>
             </table>
         </div>
 
         <div>
-            <button class="edit" type="button"><a href="{{ route('edit', $result) }}">編集</a></button>
+            <button class="edit" type="button"><a href="{{ route('edit', $product) }}">編集</a></button>
             <button class="return-bottom" type="button"><a href="{{ route('main') }}">戻る</a></button>
         </div>
-
-
+        @endforeach
 
     </main>
 

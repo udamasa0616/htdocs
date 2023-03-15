@@ -36,66 +36,69 @@
 
                     </tr>
                 </thead>
+                @foreach ($result as $product)
+                    <form method="post" action="{{ route('product_update', $product) }}" enctype="multipart/form-data">
+                        @csrf
+                        <tbody>
 
-                <form method="post" action="{{ route('product_update', $result) }}" enctype="multipart/form-data">
-                    @csrf
-                    <tbody>
+                            <tr>
 
-                        <tr>
+                                <th>{{ $product->id }}</th>
 
-                            <th>{{ $result->id }}</th>
-
-                            <th>
-                                <input value="{{ old('product_name', $result->product_name) }}" type="text"
-                                    id="product_name" name="product_name" required minlength="1" maxlength="8"
-                                    size="10">
-                            </th>
-                            @if ($errors->has('product_name'))
-                                <p>{{ $errors->first('product_name') }}</p>
-                            @endif
-                            <th>
-                                <select id='makerName' name="makerName">
-                                    <option>選択してください</option>
-                                    <option value="1" @if (old('makerName') === $result->makerName) selected @endif>EAST
-                                    </option>
-                                    <option value="2" @if (old('makerName') === $result->makerName) selected @endif>WEST
-                                    </option>
-                                    <option value="3" @if (old('makerName') === $result->makerName) selected @endif>Group
-                                    </option>
-                                </select>
-
-                            <th>
-                                <input value="{{ old('price', $result->price) }}" type="text" id="price"
-                                    name="price" required minlength="1" maxlength="8" size="10">
-                                @if ($errors->has('price'))
-                                    <p>{{ $errors->first('price') }}</p>
+                                <th>
+                                    <input value="{{ old('product_name', $product->product_name) }}" type="text"
+                                        id="product_name" name="product_name" required minlength="1" maxlength="8"
+                                        size="10">
+                                </th>
+                                @if ($errors->has('product_name'))
+                                    <p>{{ $errors->first('product_name') }}</p>
                                 @endif
-                            </th>
+                                <th>
+                                    <select id='makerName' name="makerName">
+                                        <option>選択してください</option>
+                                        <option value="1" @if (old('makerName') === $product->makerName) selected @endif>
+                                            EAST
+                                        </option>
+                                        <option value="2" @if (old('makerName') === $product->makerName) selected @endif>
+                                            WEST
+                                        </option>
+                                        <option value="3" @if (old('makerName') === $product->makerName) selected @endif>
+                                            Group
+                                        </option>
+                                    </select>
 
-                            <th>
-                                <input value="{{ old('stock', $result->stock) }}" type="text" id="stock"
-                                    name="stock" required minlength="1" maxlength="8" size="10">
-                                @if ($errors->has('stock'))
-                                    <p>{{ $errors->first('stock') }}</p>
-                                @endif
-                            </th>
+                                <th>
+                                    <input value="{{ old('price', $product->price) }}" type="text" id="price"
+                                        name="price" required minlength="1" maxlength="8" size="10">
+                                    @if ($errors->has('price'))
+                                        <p>{{ $errors->first('price') }}</p>
+                                    @endif
+                                </th>
 
-                            <th>
-                                <textarea name="comment" id="comment">{{ old('comment', $result->comment) }}</textarea>
-                                @if ($errors->has('comment'))
-                                    <p>{{ $errors->first('comment') }}</p>
-                                @endif
-                            </th>
+                                <th>
+                                    <input value="{{ old('stock', $product->stock) }}" type="text" id="stock"
+                                        name="stock" required minlength="1" maxlength="8" size="10">
+                                    @if ($errors->has('stock'))
+                                        <p>{{ $errors->first('stock') }}</p>
+                                    @endif
+                                </th>
 
-                            <th>
-                                <img src="{{ asset('storage/' . $result->img_path) }}" width="25%">
-                                <input name='img_path' class="img_path" type="file">
-                                @if ($errors->has('img_path'))
-                                    <p>{{ $errors->first('img_path') }}</p>
-                                @endif
-                            </th>
-                        </tr>
-                    </tbody>
+                                <th>
+                                    <textarea name="comment" id="comment">{{ old('comment', $product->comment) }}</textarea>
+                                    @if ($errors->has('comment'))
+                                        <p>{{ $errors->first('comment') }}</p>
+                                    @endif
+                                </th>
+
+                                <th>
+                                    <img src="{{ asset('storage/' . $product->img_path) }}" width="25%">
+                                    <input name='img_path' class="img_path" type="file">
+                                    @if ($errors->has('img_path'))
+                                        <p>{{ $errors->first('img_path') }}</p>
+                                    @endif
+                                </th>
+                            </tr>
+                        </tbody>
 
             </table>
 
@@ -107,11 +110,9 @@
         </div>
 
         <button class="return-button" type="button"><a
-                href="{{ route('show', ['id' => $result->id]) }}">戻る</a></button>
+                href="{{ route('show', ['id' => $product->id]) }}">戻る</a></button>
         </div>
-
-
-
+        @endforeach
     </main>
 
     <footer>

@@ -50,3 +50,8 @@ Route::get('/show/{id}', 'ProductController@productShow')->name('show');
 Route::get('/edit/{id}', 'ProductController@productEdit')->name('edit');
 // 更新ボタン
 Route::post('/update/{id}', 'ProductController@productUpdate')->name('product_update');
+
+
+// 検索画面
+
+Route::get('search_product', 'ProductController@search')->name('search_product');

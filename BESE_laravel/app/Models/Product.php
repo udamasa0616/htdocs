@@ -64,14 +64,37 @@ class Product extends Model
 
     public function productUpdate($request, $id)
     {
-        DB::table('Products')->update([
-            'products.id as products_id' => $$request->products_id,
-            'product_name' => $request->product_name,
-            'company_id'   => $request->makerName,
-            'price'        => $request->price,
-            'stock'        => $request->stock,
-            'comment'      => $request->comment,
-            'img_path'     => $request->img_path
-        ]);
+        DB::table('Products')
+            ->update([
+                'products.id as products_id' => $$request->products_id,
+                'product_name' => $request->product_name,
+                'company_id'   => $request->makerName,
+                'price'        => $request->price,
+                'stock'        => $request->stock,
+                'comment'      => $request->comment,
+                'img_path'     => $request->img_path
+            ]);
     }
+
+    // 検索 インプット
+    //m_categoriesテーブルから::pluckでcategory_nameとidを抽出し、$categoriesに返す関数を作る
+    public function getLists()
+    {
+        $categories = Product::pluck('product_name', 'id');
+
+        return $categories;
+    }
+    // //「カテゴリ(category)はたくさんの商品(products)をもつ」というリレーション関係を定義する
+    // public function products()
+    // {
+    //     return $this->hasMany(Product::class);
+    // }
+
+    // // セレクトボックス
+
+    // //「商品(products)はカテゴリ(category)に属する」というリレーション関係を定義する
+    // public function category()
+    // {
+    //     return $this->belongsTo(product::class);
+    // }
 }
