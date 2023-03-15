@@ -92,7 +92,7 @@
 
                                 <th>
                                     <img src="{{ asset('storage/' . $product->img_path) }}" width="25%">
-                                    <input name='img_path' class="img_path" type="file">
+                                    <input name='img_path' class="img_path" type="file" required>
                                     @if ($errors->has('img_path'))
                                         <p>{{ $errors->first('img_path') }}</p>
                                     @endif

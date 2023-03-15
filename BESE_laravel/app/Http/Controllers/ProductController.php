@@ -22,7 +22,6 @@ class ProductController extends Controller
     // 表示
     public function productMainView(Request $request)
     {
-
         // query
         //フォームを機能させるために各情報を取得し、viewに返す
 
@@ -44,11 +43,11 @@ class ProductController extends Controller
     /*==================================
     検索メソッド(search_product)
     ==================================*/
-    public function search(Request $request)
+    public function search(Request $request) //$req
     {
         //入力される値nameの中身を定義する
-        $searchWord = $request->input('searchWord'); //商品名の値
-        $categoryId = $request->input('categoryId'); //カテゴリの値
+        $searchWord = $request->searchWord; //商品名の値
+        $categoryId = $request->categoryId; //カテゴリの値
 
         $query = Product::query();
         //商品名が入力された場合、productsテーブルから一致する商品を$queryに代入
@@ -136,7 +135,18 @@ class ProductController extends Controller
         // 削除したら一覧画面にリダイレクト
         $products = new Product();
         $result = $products->getAll();
-        return view('main_display', ['result' => $result]);
+
+        $category = new Company;
+        $categories = $category->getLists();
+        $searchWord = "";
+        $categoryId =  "";
+
+        return view('main_display', [
+            'categories' => $categories,
+            'searchWord' => $searchWord,
+            'categoryId' => $categoryId,
+            'result' => $result,
+        ]);
     }
 
     // 詳細画面表示

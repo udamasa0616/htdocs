@@ -34,25 +34,25 @@
                                 <input type="text" class="form-control" name="searchWord"
                                     value="{{ $searchWord }}">
                             </div>
+
+                            <!--プルダウンカテゴリ選択-->
+                            <div class="form-group row">
+                                <label class="col-sm-2">メーカ名</label>
+                                <div class="col-sm-3">
+                                    <select name="categoryId" value="{{ $categoryId }}">
+                                        <option value="">未選択</option>
+
+                                        @foreach ($categories as $id => $category_name)
+                                            <option value="{{ $id }}">
+                                                {{ $category_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-sm-auto">
                                 <button type="submit" class="btn btn-primary ">検索</button>
                             </div>
-                        </div>
-                        <!--プルダウンカテゴリ選択-->
-                        <div class="form-group row">
-                            <label class="col-sm-2">メーカ名</label>
-                            <div class="col-sm-3">
-                                <select name="categoryId" value="{{ $categoryId }}">
-                                    <option value="">未選択</option>
-
-                                    @foreach ($categories as $id => $category_name)
-                                        <option value="{{ $id }}">
-                                            {{ $category_name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                         <tbody>
 
                             <tr>
-                                <th>{{ $product->id }}</th>
+                                <th>{{ $product->products_id }}</th>
                                 <th><img src="{{ asset('storage/' . $product->img_path) }}" width="25%"></th>
                                 <th>{{ $product->product_name }}</th>
                                 <th>{{ $product->price }}円</th>
