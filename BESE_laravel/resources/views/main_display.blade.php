@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="{{ asset('/css/appp.css') }}">
     <!-- js -->
     <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script>
-
-    <!-- img -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -150,11 +151,11 @@
                             <th>{{ $product->stock }}個</th>
                             <th>
                                 @if ($product->company_id === 1)
-                                    <p>WEST</p>
+                                    <p>コカコーラ</p>
                                 @elseif($product->company_id === 2)
-                                    <p>EAST</p>
+                                    <p>サントリー</p>
                                 @else
-                                    <p>Group</p>
+                                    <p>チェリオ</p>
                                 @endif
                             </th>
                             <th>{{ $product->comment }}</th>

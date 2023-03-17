@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="{{ asset('/css/appp.css') }}">
     <!-- js -->
     <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script>
-
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -57,13 +59,13 @@
                                     <select id='makerName' name="makerName">
                                         <option>選択してください</option>
                                         <option value="1" @if (old('makerName') === $product->makerName) selected @endif>
-                                            EAST
+                                            コカコーラ
                                         </option>
                                         <option value="2" @if (old('makerName') === $product->makerName) selected @endif>
-                                            WEST
+                                            サントリー
                                         </option>
                                         <option value="3" @if (old('makerName') === $product->makerName) selected @endif>
-                                            Group
+                                            チェリオ
                                         </option>
                                     </select>
 

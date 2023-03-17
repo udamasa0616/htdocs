@@ -7,6 +7,9 @@
     <!-- css -->
     <link rel="stylesheet" href="{{ asset('/css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/appp.css') }}">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -47,11 +50,11 @@
 
                                 <select name="makerName">
                                     <option selected='disabled'>選択してください</option>
-                                    <option value="1" @if (1 === (int) old('makerName')) selected @endif>EAST
+                                    <option value="1" @if (1 === (int) old('makerName')) selected @endif>コカコーラ
                                     </option>
-                                    <option value="2" @if (2 === (int) old('makerName')) selected @endif>WEST
+                                    <option value="2" @if (2 === (int) old('makerName')) selected @endif>サントリー
                                     </option>
-                                    <option value="3" @if (3 === (int) old('makerName')) selected @endif>Group
+                                    <option value="3" @if (3 === (int) old('makerName')) selected @endif>チェリオ
                                     </option>
                                 </select>
 
